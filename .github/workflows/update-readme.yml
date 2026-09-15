@@ -29,24 +29,32 @@ jobs:
           with urllib.request.urlopen(URL) as response:
               conferences = json.load(response)
 
+          today = date.today().isoformat()
           events = []
 
           for conference in conferences:
               for edition in conference.get("editions", []):
+                  start_date = edition["start_date"]
+
+                  # Only include upcoming conferences
+                  if start_date < today:
+                      continue
+
                   events.append({
                       "name": conference["name"],
                       "year": edition["year"],
-                      "start_date": edition["start_date"],
+                      "start_date": start_date,
                       "end_date": edition["end_date"],
                       "city": edition.get("city", ""),
                       "venue": edition.get("venue", ""),
                       "link": edition.get("link", "")
                   })
 
-          events.sort(key=lambda x: x["start_date"], reverse=True)
+          # Newest upcoming event first
+          events.sort(key=lambda x: x["start_date"])
 
           rows = [
-              "## Conferences",
+              "## Upcoming Conferences",
               "",
               "| Conference | Year | Date | City | Venue |",
               "|---|---:|---|---|---|"
@@ -110,6 +118,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "docs: update conference data"
+            git commit -m "docs: update upcoming conferences"
             git push
           fi
