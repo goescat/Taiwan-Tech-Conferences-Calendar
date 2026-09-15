@@ -2,10 +2,8 @@
 
 A lightweight calendar UI for Taiwan technology conferences.
 
-## Site
+## Calendar Site
 https://goescat.github.io/Taiwan-Tech-Conferences-Calendar/
-
-## Upcoming Conferences in Readme
 
 <!-- CONFERENCES:START -->
 ## Upcoming Conferences
@@ -16,6 +14,7 @@ https://goescat.github.io/Taiwan-Tech-Conferences-Calendar/
 | [PyCon Taiwan](https://tw.pycon.org/2026/zh-hant) | 2026 | 2026-10-17 – 2026-10-18 | Taipei | 臺北醫學大學 |
 | [MOPCON](https://mopcon.org/2026/) | 2026 | 2026-10-31 | Kaohsiung | 高雄科技大學楠梓校區活動中心 |
 <!-- CONFERENCES:END -->
+(Automatically updated daily by GitHub Actions.)
 
 ## Source
 
